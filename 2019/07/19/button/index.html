@@ -2,91 +2,69 @@
 
 
 
-  
 
 
-<html class="theme-next muse use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
 
 
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="51单片机,单片机,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="独立按键/矩阵按键独立按键独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。 矩阵按键若按键较多，则独立按键方式需要大量I/O口，这这是我们可以用矩阵键盘方式实现。矩阵键盘有四条I/">
+  <meta name="description" content="独立按键/矩阵按键独立按键独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。">
 <meta name="keywords" content="51单片机,单片机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="button">
 <meta property="og:url" content="http://yoursite.com/2019/07/19/button/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="独立按键/矩阵按键独立按键独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。 矩阵按键若按键较多，则独立按键方式需要大量I/O口，这这是我们可以用矩阵键盘方式实现。矩阵键盘有四条I/">
-<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Ahaasin">
+<meta property="og:description" content="独立按键/矩阵按键独立按键独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190719120532457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190719122338470.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190719123955724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
@@ -94,84 +72,86 @@
 <meta property="og:updated_time" content="2019-07-19T08:47:34.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="button">
-<meta name="twitter:description" content="独立按键/矩阵按键独立按键独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。 矩阵按键若按键较多，则独立按键方式需要大量I/O口，这这是我们可以用矩阵键盘方式实现。矩阵键盘有四条I/">
+<meta name="twitter:description" content="独立按键/矩阵按键独立按键独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190719120532457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
   <link rel="canonical" href="http://yoursite.com/2019/07/19/button/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
-
-
-  <title>button | Hexo</title>
+  <title>button | Ahaasin</title>
   
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c8e6bb12fded2e213ba2fb7359acf241";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
 
 
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Ahaasin</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -179,121 +159,161 @@
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
       
+    
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
-  
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
- </div>
+  </div>
+</div>
     </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-
-  
-
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/button/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ahaasin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Ahaasin">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">button
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">button</h1>
-        
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">发表于</span>
+
               
-                <span class="post-meta-item-text">Posted on</span>
+                
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-19T16:40:26+08:00">
-                2019-07-19
-              </time>
-            
 
-            
-
-            
-          </span>
-
+              <time title="创建时间：2019-07-19 16:40:26 / 修改时间：16:47:34" itemprop="dateCreated datePublished" datetime="2019-07-19T16:40:26+08:00">2019-07-19</time>
+            </span>
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
               
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/单片机/" itemprop="url" rel="index">
-                    <span itemprop="name">单片机</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/单片机/" itemprop="url" rel="index"><span itemprop="name">单片机</span></a></span>
 
                 
                 
@@ -302,21 +322,9 @@
           
 
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -324,91 +332,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <h1 id="独立按键-矩阵按键"><a href="#独立按键-矩阵按键" class="headerlink" title="独立按键/矩阵按键"></a>独立按键/矩阵按键</h1><h2 id="独立按键"><a href="#独立按键" class="headerlink" title="独立按键"></a>独立按键</h2><p>独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。<br><img width="450" src="https://img-blog.csdnimg.cn/20190719120532457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。</p>
+        <h1 id="独立按键-矩阵按键"><a href="#独立按键-矩阵按键" class="headerlink" title="独立按键/矩阵按键"></a>独立按键/矩阵按键</h1><h2 id="独立按键"><a href="#独立按键" class="headerlink" title="独立按键"></a>独立按键</h2><p>独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。<br><img width="450" src="https://img-blog.csdnimg.cn/20190719120532457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。</p><a id="more"></a>
 <h2 id="矩阵按键"><a href="#矩阵按键" class="headerlink" title="矩阵按键"></a>矩阵按键</h2><p>若按键较多，则独立按键方式需要大量I/O口，这这是我们可以用矩阵键盘方式实现。<br>矩阵键盘有四条I/O口做行线，四条I/O口做列线，每个按键都在行列交点上，如下图<br><img width="400" src="https://img-blog.csdnimg.cn/20190719122338470.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>矩阵键盘检测时，常用行列扫描法：<br>首先我们向控制列线的低四位输入低电压，向控制行线的高四位输高电平。当有按键被按下，该部分电路被导通，低电平通过按键进入高四位，对应的高四位中的I/O口值不再为1。因此我们检测P1端口值，若高四位不全为1，则说明有按键被按下，通过找出哪一个值不为1，可以确定哪一行的按键被按下。接着，再反过来，向高四位输入低电平，低四位输入高电平，检测出被按下的按键在哪一列，就可以得出被按下的按键的坐标。</p>
 <h2 id="按键消抖"><a href="#按键消抖" class="headerlink" title="按键消抖"></a>按键消抖</h2><p>通常按键所用的开关都是机械弹性开关，当机械触点断开、闭合时，由于机械触点的弹性作用，一个按键开关在闭合时不会马上就稳定的接通，在断开时也不会一下子彻底断开，而是在闭合和断开的瞬间伴随了一连串的抖动.<br><img width="400" src="https://img-blog.csdnimg.cn/20190719123955724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>稳点时间的长短是由操作人员决定的，正常按下一般都在100ms左右，抖动时长由机械结构决定，一般在10ms左右。为了确保按键检测准确，我们应该在按键稳定时检测，所以我们需要消抖。<br>通常消抖有两种方式，硬件消抖和软件消抖。<br>硬件消抖通过在案件两端并联电容的方式稳定电路<br><img width="200" src="https://img-blog.csdnimg.cn/20190719124607560.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>软件消抖有很多种方式，我这里用最简单的两次停顿来实现。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;reg52.h&gt;#define key P1</span><br><span class="line">typedef unsigned int uint;</span><br><span class="line">typedef unsigned char uchar;</span><br><span class="line"></span><br><span class="line">sbit lsa=P2^<span class="number">2</span>;sbit lsb=P2^<span class="number">3</span>;sbit lsc=P2^<span class="number">4</span>;</span><br><span class="line">uint num;</span><br><span class="line">uchar code smgduan[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>,<span class="number">0x77</span>,<span class="number">0x7c</span>,<span class="number">0x39</span>,<span class="number">0x5e</span>,<span class="number">0x79</span>,<span class="number">0x71</span>,<span class="number">0x00</span>&#125;;</span><br><span class="line">uint line,row;</span><br><span class="line"><span class="keyword">void</span> delay(uint i)&#123;    <span class="keyword">while</span>(i--);&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> mtrkey()&#123;    </span><br><span class="line">	char a=<span class="number">0</span>;    </span><br><span class="line">	key=<span class="number">0xf0</span>;                                   <span class="comment">//高四位为1，低四位为0    </span></span><br><span class="line">	<span class="keyword">if</span>(key!=<span class="number">0xf0</span>)&#123;        </span><br><span class="line">		delay(<span class="number">1000</span>);                           <span class="comment">//第一次停顿，消除前沿抖动        </span></span><br><span class="line">		<span class="keyword">if</span>(key!=<span class="number">0xf0</span>)&#123;               </span><br><span class="line">			key=<span class="number">0Xf0</span>;            </span><br><span class="line">			<span class="keyword">switch</span>(key)            </span><br><span class="line">			&#123;                                  <span class="comment">//找到按键的行                </span></span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0X70</span>): line=<span class="number">0</span>;<span class="keyword">break</span>;                </span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0Xb0</span>): line=<span class="number">1</span>;<span class="keyword">break</span>;                </span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0Xd0</span>): line=<span class="number">2</span>;<span class="keyword">break</span>;                </span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0Xe0</span>): line=<span class="number">3</span>;<span class="keyword">break</span>;            </span><br><span class="line">			 &#125;            </span><br><span class="line">			 key=<span class="number">0x0f</span>;                         <span class="comment">//高四位为0，低四位为1            </span></span><br><span class="line">			 <span class="keyword">switch</span>(key)            </span><br><span class="line">			 &#123;                                 <span class="comment">//找到按键的列                </span></span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0X07</span>): row=<span class="number">0</span>;<span class="keyword">break</span>;                </span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0X0b</span>): row=<span class="number">1</span>;<span class="keyword">break</span>;                </span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0X0d</span>): row=<span class="number">2</span>;<span class="keyword">break</span>;                </span><br><span class="line">			 	<span class="keyword">case</span>(<span class="number">0X0e</span>): row=<span class="number">3</span>;<span class="keyword">break</span>;            </span><br><span class="line">			 &#125;            </span><br><span class="line">			 <span class="keyword">while</span>((key!=<span class="number">0x0f</span>))                <span class="comment">//第二次停顿，消除后沿抖动            </span></span><br><span class="line">			 &#123;                </span><br><span class="line">			 	delay(<span class="number">1000</span>);                </span><br><span class="line">			 	key=<span class="number">0x0f</span>;                </span><br><span class="line">			 	a++;            </span><br><span class="line">			 &#125;        </span><br><span class="line">		 &#125;    </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> main()&#123;    </span><br><span class="line">	lsa=<span class="number">0</span>;lsb=<span class="number">0</span>;lsc=<span class="number">0</span>;</span><br><span class="line">	P0=smgduan[<span class="number">0</span>];    </span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;        </span><br><span class="line">		mtrkey();        </span><br><span class="line">		num=line*<span class="number">4</span>+row;        </span><br><span class="line">		P0=smgduan[num];    </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
+        
       
-        <div class="post-tags">
+
+      <footer class="post-footer">
           
-            <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
-          
-            <a href="/tags/单片机/" rel="tag"># 单片机</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/18/一二三四五/" rel="next" title="一二三四五">
-                <i class="fa fa-chevron-left"></i> 一二三四五
-              </a>
+          
+          <div class="post-tags">
+            
+              <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
+            
+              <a href="/tags/单片机/" rel="tag"># 单片机</a>
             
           </div>
+        
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/02/51单片机中断原理及简单应用/" rel="prev" title="51单片机中断原理及简单应用">
-                51单片机中断原理及简单应用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/07/18/一二三四五/" rel="next" title="一二三四五">
+                  <i class="fa fa-chevron-left"></i> 一二三四五
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/09/02/51单片机中断原理及简单应用/" rel="prev" title="51单片机中断原理及简单应用">
+                  51单片机中断原理及简单应用 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
           </div>
-        </div>
-      
-
-      
-      
-    </footer>
+        
+      </footer>
+    
   </div>
   
   
   
   </article>
 
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
-
-
-          
-
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQ3My8yMjk4NA"></div>
+  </div>
+  
   
 
-
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -419,137 +411,130 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
-
+        
+        
+        
+        
       
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">categories</span>
-                
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立按键-矩阵按键"><span class="nav-number">1.</span> <span class="nav-text">独立按键/矩阵按键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#独立按键"><span class="nav-number">1.1.</span> <span class="nav-text">独立按键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵按键"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵按键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按键消抖"><span class="nav-number">1.3.</span> <span class="nav-text">按键消抖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#独立按键-矩阵按键"><span class="nav-number">1.</span> <span class="nav-text">独立按键/矩阵按键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#独立按键"><span class="nav-number">1.1.</span> <span class="nav-text">独立按键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵按键"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵按键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按键消抖"><span class="nav-number">1.3.</span> <span class="nav-text">按键消抖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+        
+      </div>
       <!--/noindex-->
-      
 
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="Ahaasin">
+  <p class="site-author-name" itemprop="name">Ahaasin</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/5534286284" title="Weibo &rarr; https://weibo.com/5534286284" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/13167229" title="bilibili &rarr; https://space.bilibili.com/13167229" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>bilibili</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
-
-  
+  <span class="author" itemprop="copyrightHolder">Ahaasin</span>
 </div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
 
         
+
+
+
+
+
 
 
 
@@ -560,156 +545,76 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
