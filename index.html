@@ -3,6 +3,11 @@
 
 
 
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
 
 <html lang="zh-CN">
 <head>
@@ -19,7 +24,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
 
 
@@ -30,10 +35,10 @@
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    sidebar: {"position":"left","display":"always","offset":40,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -47,7 +52,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -246,6 +251,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
 
     <main id="main" class="main">
@@ -457,7 +464,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/07/19/button/" class="post-title-link" itemprop="url">button</a>
+            <a href="/2019/07/19/button/" class="post-title-link" itemprop="url">独立键盘与矩阵键盘</a>
           
         </h1>
 
@@ -472,11 +479,19 @@
                 
               
 
-              <time title="创建时间：2019-07-19 16:40:26 / 修改时间：16:47:34" itemprop="dateCreated datePublished" datetime="2019-07-19T16:40:26+08:00">2019-07-19</time>
+              <time title="创建时间：2019-07-19 16:40:26" itemprop="dateCreated datePublished" datetime="2019-07-19T16:40:26+08:00">2019-07-19</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-04 15:52:40" itemprop="dateModified" datetime="2019-09-04T15:52:40+08:00">2019-09-04</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -504,7 +519,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="独立按键-矩阵按键"><a href="#独立按键-矩阵按键" class="headerlink" title="独立按键/矩阵按键"></a>独立按键/矩阵按键</h1><h2 id="独立按键"><a href="#独立按键" class="headerlink" title="独立按键"></a>独立按键</h2><p>独立按键式直接用I/O口线构成的单个按键电路，其特点是每个按键单独占用一根I/O口线，每个按键的工作不会影响其他I/O口线的状态。<br><img width="450" src="https://img-blog.csdnimg.cn/20190719120532457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>独立按键查询时，每个端口默认输出高电平，若按键按下，该端口与GND接通，变为低电平，则我们检测哪一个端口为低电平即可确定哪一个按键被按下。</p>
+          <p>键盘分为编码键盘和非编码键盘。编码键盘上闭合键识别有专用编码器实现，并产生键编码号和键值。非编码键盘靠软件编程来识别，单片机中多为非编码键盘。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -551,7 +566,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/07/18/一二三四五/" class="post-title-link" itemprop="url">一二三四五</a>
+            <a href="/2019/07/18/一二三四五/" class="post-title-link" itemprop="url">数码管显示原理及应用实现</a>
           
         </h1>
 
@@ -577,7 +592,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-19 20:56:23" itemprop="dateModified" datetime="2019-07-19T20:56:23+08:00">2019-07-19</time>
+                <time title="修改时间：2019-09-04 15:51:59" itemprop="dateModified" datetime="2019-09-04T15:51:59+08:00">2019-09-04</time>
               </span>
             
           
@@ -606,7 +621,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="静态-动态数码管显示"><a href="#静态-动态数码管显示" class="headerlink" title="静态/动态数码管显示"></a>静态/动态数码管显示</h1><h2 id="数码管工作原理简介"><a href="#数码管工作原理简介" class="headerlink" title="数码管工作原理简介"></a>数码管工作原理简介</h2><p>数码管其实就是几个LED灯组合在一起，所以我们操作数码管也就是操作LED灯。<br><img src="https://img-blog.csdnimg.cn/20190718230859421.png" alt="在这里插入图片描述"><br>图中七个组成数字的LED加一个小数点LED一共八个LED灯管，如果我们要显示1，那就把b和c点亮，其他类推。</p>
+          <p>前面学过了发光二极管的控制，再来讲数码管精容易理解了。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -653,7 +668,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/07/17/嘀嘀嘀嘀嘀嘀嘀嘀/" class="post-title-link" itemprop="url">嘀嘀嘀嘀嘀嘀嘀嘀</a>
+            <a href="/2019/07/17/嘀嘀嘀嘀嘀嘀嘀嘀/" class="post-title-link" itemprop="url">蜂鸣器的原理及控制</a>
           
         </h1>
 
@@ -668,11 +683,19 @@
                 
               
 
-              <time title="创建时间：2019-07-17 20:01:05 / 修改时间：20:30:56" itemprop="dateCreated datePublished" datetime="2019-07-17T20:01:05+08:00">2019-07-17</time>
+              <time title="创建时间：2019-07-17 20:01:05" itemprop="dateCreated datePublished" datetime="2019-07-17T20:01:05+08:00">2019-07-17</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-04 15:38:08" itemprop="dateModified" datetime="2019-09-04T15:38:08+08:00">2019-09-04</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -700,7 +723,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="蜂鸣器的使用"><a href="#蜂鸣器的使用" class="headerlink" title="蜂鸣器的使用"></a>蜂鸣器的使用</h1><h2 id="蜂鸣器工作原理"><a href="#蜂鸣器工作原理" class="headerlink" title="蜂鸣器工作原理"></a>蜂鸣器工作原理</h2><h3 id="有源-无源蜂鸣器"><a href="#有源-无源蜂鸣器" class="headerlink" title="有源/无源蜂鸣器"></a>有源/无源蜂鸣器</h3><p><a href="https://baike.baidu.com/item/%E6%9C%89%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8/10017869" target="_blank" rel="noopener">先给个百度百科链接</a><br>有源蜂鸣器，也叫电磁式蜂鸣器，内部有电磁振荡器，接通直流电源后周期性振动发声，<br>无源蜂鸣器，也叫压电式蜂鸣器，内部没有电磁振荡器，需要接带有一定波形的电流，改变波形可以改变发出的声音的音调等等。<br>这块实验板上是一个无源蜂鸣器</p>
+          <p>蜂鸣器是一种一体化结构的电子讯响器，采用直流电压供电，广泛应用于计算机、打印机、复印机、报警器、电子玩具、汽车电子设备、电话机、定时器等电子产品中作发声器件。蜂鸣器主要分为压电式蜂鸣器和电磁式蜂鸣器两种类型。蜂鸣器在电路中用字母“H”或“HA”（旧标准用“FM”、“ZZG”、“LB”、“JD”等）表示。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -747,7 +770,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/07/10/51单片机学习/" class="post-title-link" itemprop="url">灯大灯亮灯会闪</a>
+            <a href="/2019/07/10/51单片机学习/" class="post-title-link" itemprop="url">点亮发光二极管</a>
           
         </h1>
 
@@ -773,7 +796,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-17 22:15:23" itemprop="dateModified" datetime="2019-07-17T22:15:23+08:00">2019-07-17</time>
+                <time title="修改时间：2019-09-04 15:35:25" itemprop="dateModified" datetime="2019-09-04T15:35:25+08:00">2019-09-04</time>
               </span>
             
           
@@ -802,7 +825,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="点亮LED，LED闪烁"><a href="#点亮LED，LED闪烁" class="headerlink" title="点亮LED，LED闪烁"></a>点亮LED，LED闪烁</h1><h2 id="点亮LED"><a href="#点亮LED" class="headerlink" title="点亮LED"></a>点亮LED</h2><p>第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：<br><img src="https://img-blog.csdnimg.cn/20190717131515280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>（其实图上是有一点错误的，图中的二极管标号从上到下依次是D1 D2 D3….）</p>
+          <h1 id="点亮LED，LED闪烁"><a href="#点亮LED，LED闪烁" class="headerlink" title="点亮LED，LED闪烁"></a>点亮LED，LED闪烁</h1><h2 id="点亮LED"><a href="#点亮LED" class="headerlink" title="点亮LED"></a>点亮LED</h2><p>第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1079,7 +1102,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-06-01 22:21:46" itemprop="dateModified" datetime="2019-06-01T22:21:46+08:00">2019-06-01</time>
+                <time title="修改时间：2019-09-04 15:41:48" itemprop="dateModified" datetime="2019-09-04T15:41:48+08:00">2019-09-04</time>
               </span>
             
           
@@ -1274,6 +1297,11 @@
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.7k字</span>
+</div>
+
         
 
 
@@ -1296,15 +1324,25 @@
 
 
     
+    
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    
+    
+  
+    
+    
+  
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/three-waves.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
 
 
 
@@ -1344,9 +1382,34 @@
   
 
   
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
 
   
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

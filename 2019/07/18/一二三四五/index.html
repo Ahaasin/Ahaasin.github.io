@@ -3,6 +3,11 @@
 
 
 
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
 
 <html lang="zh-CN">
 <head>
@@ -19,7 +24,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
 
 
@@ -30,10 +35,10 @@
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    sidebar: {"position":"left","display":"always","offset":40,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -47,7 +52,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -57,21 +62,21 @@
   };
 </script>
 
-  <meta name="description" content="静态/动态数码管显示数码管工作原理简介数码管其实就是几个LED灯组合在一起，所以我们操作数码管也就是操作LED灯。图中七个组成数字的LED加一个小数点LED一共八个LED灯管，如果我们要显示1，那就把b和c点亮，其他类推。">
-<meta name="keywords" content="51单片机,单片机">
+  <meta name="description" content="前面学过了发光二极管的控制，再来讲数码管精容易理解了。">
+<meta name="keywords" content="单片机,51单片机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一二三四五">
+<meta property="og:title" content="数码管显示原理及应用实现">
 <meta property="og:url" content="http://yoursite.com/2019/07/18/一二三四五/index.html">
 <meta property="og:site_name" content="Ahaasin">
-<meta property="og:description" content="静态/动态数码管显示数码管工作原理简介数码管其实就是几个LED灯组合在一起，所以我们操作数码管也就是操作LED灯。图中七个组成数字的LED加一个小数点LED一共八个LED灯管，如果我们要显示1，那就把b和c点亮，其他类推。">
+<meta property="og:description" content="前面学过了发光二极管的控制，再来讲数码管精容易理解了。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190718230859421.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190718112551198.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190718155425504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-19T12:56:23.512Z">
+<meta property="og:updated_time" content="2019-09-04T07:51:59.368Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一二三四五">
-<meta name="twitter:description" content="静态/动态数码管显示数码管工作原理简介数码管其实就是几个LED灯组合在一起，所以我们操作数码管也就是操作LED灯。图中七个组成数字的LED加一个小数点LED一共八个LED灯管，如果我们要显示1，那就把b和c点亮，其他类推。">
+<meta name="twitter:title" content="数码管显示原理及应用实现">
+<meta name="twitter:description" content="前面学过了发光二极管的控制，再来讲数码管精容易理解了。">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190718230859421.png">
   <link rel="canonical" href="http://yoursite.com/2019/07/18/一二三四五/">
 
@@ -87,7 +92,7 @@
   };
 </script>
 
-  <title>一二三四五 | Ahaasin</title>
+  <title>数码管显示原理及应用实现 | Ahaasin</title>
   
 
 
@@ -255,6 +260,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
 
     <main id="main" class="main">
@@ -283,7 +290,7 @@
       <meta itemprop="name" content="Ahaasin">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">一二三四五
+        <h1 class="post-title" itemprop="name headline">数码管显示原理及应用实现
 
           
         </h1>
@@ -310,7 +317,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-19 20:56:23" itemprop="dateModified" datetime="2019-07-19T20:56:23+08:00">2019-07-19</time>
+                <time title="修改时间：2019-09-04 15:51:59" itemprop="dateModified" datetime="2019-09-04T15:51:59+08:00">2019-09-04</time>
               </span>
             
           
@@ -339,7 +346,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="静态-动态数码管显示"><a href="#静态-动态数码管显示" class="headerlink" title="静态/动态数码管显示"></a>静态/动态数码管显示</h1><h2 id="数码管工作原理简介"><a href="#数码管工作原理简介" class="headerlink" title="数码管工作原理简介"></a>数码管工作原理简介</h2><p>数码管其实就是几个LED灯组合在一起，所以我们操作数码管也就是操作LED灯。<br><img src="https://img-blog.csdnimg.cn/20190718230859421.png" alt="在这里插入图片描述"><br>图中七个组成数字的LED加一个小数点LED一共八个LED灯管，如果我们要显示1，那就把b和c点亮，其他类推。</p><a id="more"></a>
+        <p>前面学过了发光二极管的控制，再来讲数码管精容易理解了。</p>
+<a id="more"></a>
+<h1 id="静态-动态数码管显示"><a href="#静态-动态数码管显示" class="headerlink" title="静态/动态数码管显示"></a>静态/动态数码管显示</h1><h2 id="数码管工作原理简介"><a href="#数码管工作原理简介" class="headerlink" title="数码管工作原理简介"></a>数码管工作原理简介</h2><p>数码管其实就是几个LED灯组合在一起，所以我们操作数码管也就是操作LED灯。<br><img src="https://img-blog.csdnimg.cn/20190718230859421.png" alt="在这里插入图片描述"><br>图中七个组成数字的LED加一个小数点LED一共八个LED灯管，如果我们要显示1，那就把b和c点亮，其他类推。</p>
 <h3 id="共阴极-共阳极接法"><a href="#共阴极-共阳极接法" class="headerlink" title="共阴极/共阳极接法"></a>共阴极/共阳极接法</h3><p>这八个LED连接的方法有两种，共阴极和共阳极，下图左边是共阴极，右边是共阳极<br><img width="500" src="https://img-blog.csdnimg.cn/20190718112551198.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70"><br>共阴极中，我们给端口输入高电平，LED就会亮<br>共阳极中，我们输入低电平LED亮。</p>
 <h3 id="位选-段选"><a href="#位选-段选" class="headerlink" title="位选/段选"></a>位选/段选</h3><p>如果我们要显示一个8位数，那么我们要控制8个字段，每个字段有8个LED，我们将选定控制哪一位字段的过程叫做位选，将选定控制某一字段中的哪一个LED的过程叫做段选。</p>
 <h3 id="静态显示"><a href="#静态显示" class="headerlink" title="静态显示"></a>静态显示</h3><p>静态显示特点是每一位数码管都要接到一个八位数据线来保存显示字形码。送入字形码后显示的字形可一直保持。<br>比如假设现在我们要显示一个两位数，那么我们可能需要单片机的P1与P2接口，每个接口的8位分别连接两位数码管的八个LED，以此来控制每一位数字的显示。</p>
@@ -361,9 +370,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
-            
               <a href="/tags/单片机/" rel="tag"># 单片机</a>
+            
+              <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
             
           </div>
         
@@ -373,8 +382,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/07/17/嘀嘀嘀嘀嘀嘀嘀嘀/" rel="next" title="嘀嘀嘀嘀嘀嘀嘀嘀">
-                  <i class="fa fa-chevron-left"></i> 嘀嘀嘀嘀嘀嘀嘀嘀
+                <a href="/2019/07/17/嘀嘀嘀嘀嘀嘀嘀嘀/" rel="next" title="蜂鸣器的原理及控制">
+                  <i class="fa fa-chevron-left"></i> 蜂鸣器的原理及控制
                 </a>
               
             </div>
@@ -383,8 +392,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/07/19/button/" rel="prev" title="button">
-                  button <i class="fa fa-chevron-right"></i>
+                <a href="/2019/07/19/button/" rel="prev" title="独立键盘与矩阵键盘">
+                  独立键盘与矩阵键盘 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -540,6 +549,11 @@
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.7k字</span>
+</div>
+
         
 
 
@@ -562,15 +576,25 @@
 
 
     
+    
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    
+    
+  
+    
+    
+  
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/three-waves.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
 
 
 
@@ -613,6 +637,8 @@
 
   
 
+  
+
 <script>
   window.livereOptions = {
     refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
@@ -627,5 +653,8 @@
   })(document, 'script');
 </script>
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

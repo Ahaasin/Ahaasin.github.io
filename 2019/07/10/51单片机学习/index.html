@@ -3,6 +3,11 @@
 
 
 
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
 
 <html lang="zh-CN">
 <head>
@@ -19,7 +24,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
 
 
@@ -30,10 +35,10 @@
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    sidebar: {"position":"left","display":"always","offset":40,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -47,7 +52,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
@@ -57,13 +62,13 @@
   };
 </script>
 
-  <meta name="description" content="点亮LED，LED闪烁点亮LED第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：（其实图上是有一点错误的，图中的二极管标号从上到下依次是D1 D2 D3….）">
-<meta name="keywords" content="51单片机,单片机">
+  <meta name="description" content="点亮LED，LED闪烁点亮LED第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：">
+<meta name="keywords" content="单片机,51单片机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="灯大灯亮灯会闪">
+<meta property="og:title" content="点亮发光二极管">
 <meta property="og:url" content="http://yoursite.com/2019/07/10/51单片机学习/index.html">
 <meta property="og:site_name" content="Ahaasin">
-<meta property="og:description" content="点亮LED，LED闪烁点亮LED第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：（其实图上是有一点错误的，图中的二极管标号从上到下依次是D1 D2 D3….）">
+<meta property="og:description" content="点亮LED，LED闪烁点亮LED第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190717131515280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190717133204337.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
@@ -71,10 +76,10 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221118239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221129280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190717133257539.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-17T14:15:23.415Z">
+<meta property="og:updated_time" content="2019-09-04T07:35:25.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="灯大灯亮灯会闪">
-<meta name="twitter:description" content="点亮LED，LED闪烁点亮LED第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：（其实图上是有一点错误的，图中的二极管标号从上到下依次是D1 D2 D3….）">
+<meta name="twitter:title" content="点亮发光二极管">
+<meta name="twitter:description" content="点亮LED，LED闪烁点亮LED第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190717131515280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
   <link rel="canonical" href="http://yoursite.com/2019/07/10/51单片机学习/">
 
@@ -90,7 +95,7 @@
   };
 </script>
 
-  <title>灯大灯亮灯会闪 | Ahaasin</title>
+  <title>点亮发光二极管 | Ahaasin</title>
   
 
 
@@ -258,6 +263,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
 
     <main id="main" class="main">
@@ -286,7 +293,7 @@
       <meta itemprop="name" content="Ahaasin">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">灯大灯亮灯会闪
+        <h1 class="post-title" itemprop="name headline">点亮发光二极管
 
           
         </h1>
@@ -313,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-17 22:15:23" itemprop="dateModified" datetime="2019-07-17T22:15:23+08:00">2019-07-17</time>
+                <time title="修改时间：2019-09-04 15:35:25" itemprop="dateModified" datetime="2019-09-04T15:35:25+08:00">2019-09-04</time>
               </span>
             
           
@@ -342,7 +349,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="点亮LED，LED闪烁"><a href="#点亮LED，LED闪烁" class="headerlink" title="点亮LED，LED闪烁"></a>点亮LED，LED闪烁</h1><h2 id="点亮LED"><a href="#点亮LED" class="headerlink" title="点亮LED"></a>点亮LED</h2><p>第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：<br><img src="https://img-blog.csdnimg.cn/20190717131515280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>（其实图上是有一点错误的，图中的二极管标号从上到下依次是D1 D2 D3….）</p><a id="more"></a>
+        <h1 id="点亮LED，LED闪烁"><a href="#点亮LED，LED闪烁" class="headerlink" title="点亮LED，LED闪烁"></a>点亮LED，LED闪烁</h1><h2 id="点亮LED"><a href="#点亮LED" class="headerlink" title="点亮LED"></a>点亮LED</h2><p>第一个内容是关于LED灯的，首先就是如何让他亮。那么我们先看一下这块实验版的LED模块的电路图：</p>
+<a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20190717131515280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>（其实图上是有一点错误的，图中的二极管标号从上到下依次是D1 D2 D3….）</p>
 <p>图中可以看出，当左端是低电位的时候，二极管导通，LED灯亮。在单片机中，0表示低电位，1表示高电位，所以我们只需要将端口参数置零，LED就会亮。<br>端口参数志玲，端口又是什么呢？我们还是看电路图。我们可以看到，这图里的8个二极管左侧有棕红色的标号P20 P21 P22……这些表示的是处理器的引脚，89C52一共有4组共32个引脚，我们编程控制的就是这些引脚。所以我们将端口置零就是将引脚参数设置为0。在程序中，我们一般这么写：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;reg52.h&gt;     //51单片机的头文件</span><br><span class="line"></span><br><span class="line">sbit led1=P2^<span class="number">0</span>;      <span class="comment">//sbit是定义了一个位（一个字节八个位的那个位），和int，float这些差不多</span></span><br><span class="line">sbit led2=P2^<span class="number">1</span>;      <span class="comment">//这两句话的意思是，定义两个位，名字叫led1，led2，led1存的是引脚p20的值，led2是p21</span></span><br><span class="line"><span class="keyword">void</span> main()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)        <span class="comment">//一个死循环，程序才会一直执行下去</span></span><br><span class="line">	&#123;</span><br><span class="line">		 led1=<span class="number">0</span>;    <span class="comment">//p20引脚参数为0，输出低电平</span></span><br><span class="line">		 led2=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -374,9 +383,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
-            
               <a href="/tags/单片机/" rel="tag"># 单片机</a>
+            
+              <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
             
           </div>
         
@@ -396,8 +405,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/07/17/嘀嘀嘀嘀嘀嘀嘀嘀/" rel="prev" title="嘀嘀嘀嘀嘀嘀嘀嘀">
-                  嘀嘀嘀嘀嘀嘀嘀嘀 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/07/17/嘀嘀嘀嘀嘀嘀嘀嘀/" rel="prev" title="蜂鸣器的原理及控制">
+                  蜂鸣器的原理及控制 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -553,6 +562,11 @@
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.7k字</span>
+</div>
+
         
 
 
@@ -575,15 +589,25 @@
 
 
     
+    
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    
+    
+  
+    
+    
+  
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/three-waves.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
 <script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
 
 
 
@@ -626,6 +650,8 @@
 
   
 
+  
+
 <script>
   window.livereOptions = {
     refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
@@ -640,5 +666,8 @@
   })(document, 'script');
 </script>
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
