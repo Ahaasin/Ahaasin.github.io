@@ -62,13 +62,13 @@
   };
 </script>
 
-  <meta name="description" content="计算几何/凸包/安德鲁算法先说一下凸包是啥抽象解释：在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造（来自百度百科）；">
+  <meta name="description" content="计算几何/凸包/安德鲁算法">
 <meta name="keywords" content="计算几何,安德鲁算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算几何&#x2F;凸包&#x2F;安德鲁">
 <meta property="og:url" content="http://yoursite.com/2019/07/06/小布尔乔亚”/index.html">
 <meta property="og:site_name" content="Ahaasin">
-<meta property="og:description" content="计算几何/凸包/安德鲁算法先说一下凸包是啥抽象解释：在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造（来自百度百科）；">
+<meta property="og:description" content="计算几何/凸包/安德鲁算法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190623041913702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190623112336587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
@@ -85,7 +85,7 @@
 <meta property="og:updated_time" content="2019-07-07T03:12:50.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算几何&#x2F;凸包&#x2F;安德鲁">
-<meta name="twitter:description" content="计算几何/凸包/安德鲁算法先说一下凸包是啥抽象解释：在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造（来自百度百科）；">
+<meta name="twitter:description" content="计算几何/凸包/安德鲁算法">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190623041913702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
   <link rel="canonical" href="http://yoursite.com/2019/07/06/小布尔乔亚”/">
 
@@ -355,7 +355,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="计算几何-凸包-安德鲁算法"><a href="#计算几何-凸包-安德鲁算法" class="headerlink" title="计算几何/凸包/安德鲁算法"></a>计算几何/凸包/安德鲁算法</h1><h6 id="先说一下凸包是啥"><a href="#先说一下凸包是啥" class="headerlink" title="先说一下凸包是啥"></a>先说一下凸包是啥</h6><p>抽象解释：在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造（来自百度百科）；</p><a id="more"></a>
+        <h1 id="计算几何-凸包-安德鲁算法"><a href="#计算几何-凸包-安德鲁算法" class="headerlink" title="计算几何/凸包/安德鲁算法"></a>计算几何/凸包/安德鲁算法</h1><a id="more"></a><h6 id="先说一下凸包是啥"><a href="#先说一下凸包是啥" class="headerlink" title="先说一下凸包是啥"></a>先说一下凸包是啥</h6><p>抽象解释：在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造（来自百度百科）；</p>
 <p>简单理解：对于一个平面空间上的点集，其中的一些点总可以构成一个凸多边形，这个多边形（包括边界）包含了改点集内所有的点，这个凸多边形就是凸包。<br>如图：<br><img src="https://img-blog.csdnimg.cn/20190623041913702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在计算几何领域，有很多个求凸包的方法，这里主要讲比较容易掌握安德鲁算法（Andrew’s Algorithm)（<strong>因为我菜…</strong>)</p>
 <h2 id="算法基本思路"><a href="#算法基本思路" class="headerlink" title="算法基本思路"></a>算法基本思路</h2><p>1.将给定的集合的点按X坐标升序排序，X相同则按Y升序排序；</p>
 <p>2.创建凸包上部：<br>将排序后的点按从小到大顺序加入凸包<strong>A</strong>，若新加入的点使凸包<strong>A</strong>不再是凸多边形，则逆序删除之前加入的点，直到重新变成凸多边形；<br>3.创建凸包下部：<br>将排序后的点按从大到小顺序加入凸包<strong>B</strong>，若新加入的点使凸包<strong>B</strong>不再是凸多边形，则逆序删除之前加入的点，直到重新变成凸多边形；</p>
@@ -508,7 +508,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

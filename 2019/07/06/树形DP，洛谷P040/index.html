@@ -62,18 +62,18 @@
   };
 </script>
 
-  <meta name="description" content="洛谷P1040/树形DP/区间DP题目描述设一个n个节点的二叉树tree的中序遍历为（1,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数。若">
+  <meta name="description" content="洛谷P1040/树形DP/区间DP">
 <meta name="keywords" content="DP,树形DP,区间DP,洛谷">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树形DP，洛谷P040">
 <meta property="og:url" content="http://yoursite.com/2019/07/06/树形DP，洛谷P040/index.html">
 <meta property="og:site_name" content="Ahaasin">
-<meta property="og:description" content="洛谷P1040/树形DP/区间DP题目描述设一个n个节点的二叉树tree的中序遍历为（1,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数。若">
+<meta property="og:description" content="洛谷P1040/树形DP/区间DP">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-07-09T16:37:35.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树形DP，洛谷P040">
-<meta name="twitter:description" content="洛谷P1040/树形DP/区间DP题目描述设一个n个节点的二叉树tree的中序遍历为（1,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数。若">
+<meta name="twitter:description" content="洛谷P1040/树形DP/区间DP">
   <link rel="canonical" href="http://yoursite.com/2019/07/06/树形DP，洛谷P040/">
 
 
@@ -342,7 +342,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="洛谷P1040-树形DP-区间DP"><a href="#洛谷P1040-树形DP-区间DP" class="headerlink" title="洛谷P1040/树形DP/区间DP"></a>洛谷P1040/树形DP/区间DP</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>设一个n个节点的二叉树tree的中序遍历为（1,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：<br>subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数。<br>若某个子树为空，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br>试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；<br>（1）tree的最高加分<br>（2）tree的前序遍历</p><a id="more"></a>
+        <h1 id="洛谷P1040-树形DP-区间DP"><a href="#洛谷P1040-树形DP-区间DP" class="headerlink" title="洛谷P1040/树形DP/区间DP"></a>洛谷P1040/树形DP/区间DP</h1><a id="more"></a><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>设一个n个节点的二叉树tree的中序遍历为（1,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：<br>subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数。<br>若某个子树为空，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br>试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；<br>（1）tree的最高加分<br>（2）tree的前序遍历</p>
 <h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>第1行：一个整数n（n＜30），为节点个数。<br>第2行：n个用空格隔开的整数，为每个节点的分数（分数＜100）。</p>
 <h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>第1行：一个整数，为最高加分（结果不会超过4,000,000,000）。<br>第2行：n个用空格隔开的整数，为该树的前序遍历。<br>输入输出样例</p>
 <h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><p>5<br>5 7 1 2 10</p>
@@ -500,7 +500,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
