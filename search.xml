@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo下NexT7.X主题的美化及其他设置]]></title>
+    <url>%2F2019%2F09%2F05%2Fhexo%E4%B8%8BnexT7-X%E4%B8%BB%E9%A2%98%E7%9A%84%E7%BE%8E%E5%8C%96%E5%8F%8A%E5%85%B6%E4%BB%96%E8%AE%BE%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[最近把博客主题换成了next，NexT主题现在已经更新到了7.X版本，许多设置都与以前不同了。本菜鸡把碰到的各种问题及其在网上找到的解决方案汇总一下。 主题设置打开主题配置页面，搜索scheme，会出现主题的相关选项，有mist，muse，pieces，Gemini四个选项，要选定的话直接取消注释就好了。 12345# Schemes#scheme: Muse#scheme: Mist#scheme: Piscesscheme: Gemini 设置菜单的标签页及分类等在主题配置界面搜索menu，会出现menu seting，需要某一项就取消哪一项的注释，或者自己添加。 123456789menu: home: / || home about: /about/ || user tags: /tags/ || tags categories: /categories/ || th archives: /archives/ || archive #schedule: /schedule/ || calendar #sitemap: /sitemap.xml || sitemap #commonweal: /404/ || heartbeat 同时需要新建相应的页面，例如取消了tags的注释，就需要执行以下代码 1hexo new page tags 然后打开新生成的.md文件，添加页面类型字段，其值设置为tags 12345---title: tagsdate: 2019-09-03 13:09:42type: "tags" # 新生成的文件没有这一句--- 在 about: /about/ || user 中，||后面的user表示的是图标，你可以在http://fontawesome.dashgame.com/ 网站挑选自己喜欢的图标，将代码替换上去。 添加侧边栏社交按钮在主题配置文件中搜索social links，会出现相关的配置，如下图 123456789101112131415161718social: #GitHub: https://github.com/yourname || github #E-Mail: mailto:yourname@gmail.com || envelope Weibo: https://weibo.com/5534286284 || weibo bilibili: https://space.bilibili.com/13167229 || tv #Google: https://plus.google.com/yourname || google #Twitter: https://twitter.com/yourname || twitter #FB Page: https://www.facebook.com/yourname || facebook #VK Group: https://vk.com/yourname || vkhttps://www.zhihu.com/people/tu-tao-33 #StackOverflow: https://stackoverflow.com/yourname || stack-overflow #YouTube: https://youtube.com/yourname || youtube #Instagram: https://instagram.com/yourname || instagram #Skype: skype:yourname?call|chat || skypesocial_icons: enable: true icons_only: false transition: false 想要添加某个社交账号，可以将前面的注释去掉，再将链接改成自己的社交帐号主页的链接。你也可以自己添加其他的网站。||后面同样是图标。 添加头像及旋转设置将你所想设置成头像的图片放置在/themes/next/source/images文件夹下，在主题配置文件中搜索avatar，进行如下配置 12345678910# Sidebar Avataravatar: # In theme directory (source/images): /images/avatar.gif # In site directory (source/uploads): /uploads/avatar.gif # You can also use other linking images. url: /images/avatar.png # avatar.png改成你的头像文件的文件名 # If true, the avatar would be dispalyed in circle. rounded: true # 鼠标放在头像上，头像会旋转 # If true, the avatar would be rotated with the cursor. rotated: true # 头像设置成圆形，否则是矩形 动态背景设置在主题配置界面搜索canvas，定位到如下代码，为三种动态背景。将自己需要的样式相关参数设置为true即可。但由于新版本下相关的文件并没有默认下载，故需要先下载文件，具体步骤为在theme/source/lib/位置执行控制台指令： 1git clone https://github.com/theme-next/theme-next-three source/lib/three 随后，在主题文件中将相关的条件设置为true。在这里我用的是three。 12345678910111213141516171819202122232425262728# JavaScript 3D library.# Dependencies: https://github.com/theme-next/theme-next-threethree: enable: true delay: false # Set true to further delay loading three_waves: true canvas_lines: true canvas_sphere: true# Canvas-nest# Dependencies: https://github.com/theme-next/theme-next-canvas-nest# For more information: https://github.com/hustcc/canvas-nest.jscanvas_nest: enable: false onmobile: true # Display on mobile or not color: "0,0,255" # RGB values, use `,` to separate opacity: 0.5 # The opacity of line: 0~1 zIndex: -1 # z-index property of the background count: 99 # The number of lines# Canvas-ribbon# Dependencies: https://github.com/theme-next/theme-next-canvas-ribbon# For more information: https://github.com/zproo/canvas-ribboncanvas_ribbon: enable: false size: 300 # The width of the ribbon alpha: 0.6 # The transparency of the ribbon zIndex: -1 # The display level of the ribbon 全站字体统计首先在根目录下执行指令 1npm install hexo-wordcount --save 然后找到/themes/next/layout/_partials/文件夹里的footer.swig文件，在底部添加代码 1234&lt;div class="theme-info"&gt; &lt;div class="powered-by"&gt;&lt;/div&gt; &lt;span class="post-count"&gt;博客全站共&#123;&#123; totalcount(site) &#125;&#125;字&lt;/span&gt;&lt;/div&gt; 添加live看板娘设置加载动画在主题配置文件中搜索pace,会定位在如下位置： 123456pace: enable: true # Themes list: # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal theme: center-atom 将enable参数设置为true，将theme设置为自己想要的动画类型，可选项就是theme在上面两行。新版本下可能修改后依然不生效，同动态背景的设置一样，需要先下载相关的文件，即在theme/source/lib/位置执行控制台指令： 1git clone https://github.com/theme-next/theme-next-pace source/lib/pace 文章折叠在主题配置文件中搜素auto_excerpt,将enable设置成true，length数值表示的是不折叠的字段长度。 123auto_excerpt: enable: true length: 10 添加搜索功能首先要安装搜索插件 1npm install hexo-generator-searchdb --save 在根目录下的站点配置文件中添加以下内容 12345search: path: search.xml field: post format: html limit: 10000 在主题配置文件中启用搜索功能,定位到local search，将enable改为true。 12345678910111213# Local Search# Dependencies: https://github.com/wzpan/hexo-generator-searchlocal_search: enable: true # If auto, trigger search by changing input. # If manual, trigger search by pressing enter key or search button. trigger: auto # Show top n results per article, show all results by setting to -1 top_n_per_article: 1 # Unescape html strings to the readable one. unescape: false # Preload the search data when the page loads. preload: false 添加评论功能接入百度统计如果没有百度统计账号先注册一个，地址https://tongji.baidu.com/然后在管理页面添加网站，接着在代码管理界面获取代码，会出现如下内容 123456789&lt;script&gt;var _hmt = _hmt || [];(function() &#123; var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?(你需要复制的内容)"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);&#125;)();&lt;/script&gt; 将hm.js?后面的代码复制。打开主题配置文件，定位到baidu_analytics，将刚刚复制下来的内容粘贴到其后面即可。]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F09%2F03%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
@@ -13,8 +21,8 @@
         <category>单片机</category>
       </categories>
       <tags>
-        <tag>51单片机</tag>
         <tag>单片机</tag>
+        <tag>51单片机</tag>
       </tags>
   </entry>
   <entry>
@@ -25,8 +33,8 @@
         <category>单片机</category>
       </categories>
       <tags>
-        <tag>51单片机</tag>
         <tag>单片机</tag>
+        <tag>51单片机</tag>
       </tags>
   </entry>
   <entry>
@@ -37,8 +45,8 @@
         <category>单片机</category>
       </categories>
       <tags>
-        <tag>51单片机</tag>
         <tag>单片机</tag>
+        <tag>51单片机</tag>
       </tags>
   </entry>
   <entry>
@@ -49,8 +57,8 @@
         <category>单片机</category>
       </categories>
       <tags>
-        <tag>51单片机</tag>
         <tag>单片机</tag>
+        <tag>51单片机</tag>
       </tags>
   </entry>
   <entry>
@@ -61,8 +69,8 @@
         <category>单片机</category>
       </categories>
       <tags>
-        <tag>51单片机</tag>
         <tag>单片机</tag>
+        <tag>51单片机</tag>
       </tags>
   </entry>
   <entry>
