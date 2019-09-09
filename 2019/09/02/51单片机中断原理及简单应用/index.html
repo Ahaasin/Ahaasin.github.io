@@ -63,15 +63,23 @@
   };
 </script>
 
-  <meta name="keywords" content="51单片机,单片机">
+  <meta name="description" content="我们设想一种状况：有一天你正在看教学♂视频，这时候你老妈突然给你发了条微信“儿砸，干嘛呢”，然后你立马暂停了你的视频，回了句“我，打钱！”。实际上上述过程中就发生了一次中断。">
+<meta name="keywords" content="51单片机,单片机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="51单片机中断原理及简单应用">
 <meta property="og:url" content="https://ahaasin.github.io/2019/09/02/51单片机中断原理及简单应用/index.html">
 <meta property="og:site_name" content="Ahaasin">
+<meta property="og:description" content="我们设想一种状况：有一天你正在看教学♂视频，这时候你老妈突然给你发了条微信“儿砸，干嘛呢”，然后你立马暂停了你的视频，回了句“我，打钱！”。实际上上述过程中就发生了一次中断。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T02:13:16.247Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190909113033918.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190909114639156.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190909122207100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190909122504338.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-09-09T04:28:59.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="51单片机中断原理及简单应用">
+<meta name="twitter:description" content="我们设想一种状况：有一天你正在看教学♂视频，这时候你老妈突然给你发了条微信“儿砸，干嘛呢”，然后你立马暂停了你的视频，回了句“我，打钱！”。实际上上述过程中就发生了一次中断。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190909113033918.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
   <link rel="canonical" href="https://ahaasin.github.io/2019/09/02/51单片机中断原理及简单应用/">
 
 
@@ -311,7 +319,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-03 10:13:16" itemprop="dateModified" datetime="2019-09-03T10:13:16+08:00">2019-09-03</time>
+                <time title="修改时间：2019-09-09 12:28:59" itemprop="dateModified" datetime="2019-09-09T12:28:59+08:00">2019-09-09</time>
               </span>
             
           
@@ -340,7 +348,61 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>我们设想一种状况：有一天你正在看教学♂视频，这时候你老妈突然给你发了条微信“儿砸，干嘛呢”，然后你立马暂停了你的视频，回了句“我，打钱！”。实际上上述过程中就发生了一次中断。</p>
+<a id="more"></a>
+<h1 id="中断的概念"><a href="#中断的概念" class="headerlink" title="中断的概念"></a>中断的概念</h1><p>上述过程中，你本来在激动地看着视频，但是一条微信打断了这一切，那条消息就叫做中断源。引起CPU中断的根源叫做中断源，中断源向CPU提出申请，CPU暂时中断事件A（教学视频），转而处理事件B（乞讨），对事件B处理完后，再回到原来中断的地方（即断点）（视频暂停的位置）。实现该过程的部件叫做中断系统。<br><img src="https://img-blog.csdnimg.cn/20190909113033918.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断流程图"></p>
+<h2 id="中断嵌套-中断优先级"><a href="#中断嵌套-中断优先级" class="headerlink" title="中断嵌套/中断优先级"></a>中断嵌套/中断优先级</h2><p>上述过程中，你刚打开微信，准备向你妈乞讨，这时候你同学发来一条消息“上号”，你将选择先打把游戏，再回到微信对你妈说“刚刚在学习没看到”，然后再回到教学视频。同学找你发生在你正准备乞讨时，也就是正在执行中断响应时，那么“上号”就是嵌套的更高级的中断。如果上述两个事件同时发生，你还是会先“上号”，那么就认为“上号”的优先级高于“乞讨”。<br><img src="https://img-blog.csdnimg.cn/20190909114639156.png" alt="中断嵌套"><br>那么如何确定两个中断哪个优先级更高呢？这取决于中断优先级寄存器的设置，我们再后面会讲到。</p>
+<h1 id="中断源"><a href="#中断源" class="headerlink" title="中断源"></a>中断源</h1><p>51单片机共有5个中断源：</p>
+<ul>
+<li>INT0：外部中断0，P3.2引脚接入，低电平或下降沿有效；</li>
+<li>INT1：外部中断1，P3.3接入，低电平或下降沿有效；</li>
+<li>T0：定时器计数器0中断，由T0计数器计满回零引起；</li>
+<li>T1：定时器计数器1，T1引起；</li>
+<li>TI/RI：串行口中断，串行端口完成一帧字符发送/接收后引起。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>中断源</th>
+<th>中断优先级</th>
+<th>中断标志</th>
+<th>入口地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>INT0</td>
+<td>最高</td>
+<td>IE0</td>
+<td>0003H</td>
+</tr>
+<tr>
+<td>T0</td>
+<td>第二</td>
+<td>TF0</td>
+<td>000BH</td>
+</tr>
+<tr>
+<td>INT1</td>
+<td>第三</td>
+<td>IE1</td>
+<td>0013H</td>
+</tr>
+<tr>
+<td>T1</td>
+<td>第四</td>
+<td>TF1</td>
+<td>001BH</td>
+</tr>
+<tr>
+<td>TI/RI</td>
+<td>最低</td>
+<td>RI/TI</td>
+<td>0023H</td>
+</tr>
+</tbody></table>
+<h1 id="中断允许寄存器"><a href="#中断允许寄存器" class="headerlink" title="中断允许寄存器"></a>中断允许寄存器</h1><p>中断允许寄存器IE用来设置各中断源的打开与关闭。<br><img src="https://img-blog.csdnimg.cn/20190909122207100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断允许寄存器IE"></p>
+<h1 id="中断优先级寄存器IP"><a href="#中断优先级寄存器IP" class="headerlink" title="中断优先级寄存器IP"></a>中断优先级寄存器IP</h1><p>中断优先级寄存器控制中断的优先级。<br><img src="https://img-blog.csdnimg.cn/20190909122504338.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断优先级寄存器IP"></p>
+
     </div>
 
     
@@ -435,6 +497,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#中断的概念"><span class="nav-number">1.</span> <span class="nav-text">中断的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中断嵌套-中断优先级"><span class="nav-number">1.1.</span> <span class="nav-text">中断嵌套/中断优先级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断源"><span class="nav-number">2.</span> <span class="nav-text">中断源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断允许寄存器"><span class="nav-number">3.</span> <span class="nav-text">中断允许寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断优先级寄存器IP"><span class="nav-number">4.</span> <span class="nav-text">中断优先级寄存器IP</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -534,7 +598,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.4k字</span>
+  <span class="post-count">博客全站共11.0k字</span>
 </div>
 
         
@@ -636,7 +700,7 @@
   })(document, 'script');
 </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
 
 <!-- 页面点击小红心 -->
