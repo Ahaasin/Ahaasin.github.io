@@ -76,7 +76,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190909122207100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190909221354354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190909220624727.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-09-09T15:00:11.835Z">
+<meta property="og:updated_time" content="2019-09-11T15:25:17.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="51单片机中断原理及简单应用">
 <meta name="twitter:description" content="我们设想一种状况：有一天你正在看教学♂视频，这时候你老妈突然给你发了条微信“儿砸，干嘛呢”，然后你立马暂停了你的视频，回了句“我，打钱！”。实际上上述过程中就发生了一次中断。">
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 23:00:11" itemprop="dateModified" datetime="2019-09-09T23:00:11+08:00">2019-09-09</time>
+                <time title="修改时间：2019-09-11 23:25:17" itemprop="dateModified" datetime="2019-09-11T23:25:17+08:00">2019-09-11</time>
               </span>
             
           
@@ -366,43 +366,43 @@
 <tr>
 <th>中断源</th>
 <th>中断优先级</th>
-<th>中断标志</th>
+<th>中断号</th>
 <th>入口地址</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>INT0</td>
 <td>最高</td>
-<td>IE0</td>
+<td>0</td>
 <td>0003H</td>
 </tr>
 <tr>
 <td>T0</td>
 <td>第二</td>
-<td>TF0</td>
+<td>1</td>
 <td>000BH</td>
 </tr>
 <tr>
 <td>INT1</td>
 <td>第三</td>
-<td>IE1</td>
+<td>2</td>
 <td>0013H</td>
 </tr>
 <tr>
 <td>T1</td>
 <td>第四</td>
-<td>TF1</td>
+<td>3</td>
 <td>001BH</td>
 </tr>
 <tr>
 <td>TI/RI</td>
 <td>最低</td>
-<td>RI/TI</td>
+<td>4</td>
 <td>0023H</td>
 </tr>
 </tbody></table>
 <h1 id="中断允许寄存器"><a href="#中断允许寄存器" class="headerlink" title="中断允许寄存器"></a>中断允许寄存器</h1><p>中断允许寄存器IE用来设置各中断源的打开与关闭。<br><img src="https://img-blog.csdnimg.cn/20190909122207100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断允许寄存器IE"></p>
-<h1 id="中断请求标志TCON"><a href="#中断请求标志TCON" class="headerlink" title="中断请求标志TCON"></a>中断请求标志TCON</h1><p>中断优先级寄存器控制中断的优先级。<br><img src="https://img-blog.csdnimg.cn/20190909221354354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断请求标志TCON"></p>
+<h1 id="中断请求标志TCON"><a href="#中断请求标志TCON" class="headerlink" title="中断请求标志TCON"></a>中断请求标志TCON</h1><p>控制中断及定时器。<br><img src="https://img-blog.csdnimg.cn/20190909221354354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断请求标志TCON"></p>
 <h1 id="中断系统的结构"><a href="#中断系统的结构" class="headerlink" title="中断系统的结构"></a>中断系统的结构</h1><p><img src="https://img-blog.csdnimg.cn/20190909220624727.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="中断系统结构图"></p>
 <p>上面我们已经介绍了TCON与IE，现在我们来讲一下该结构怎么工作。我们以INT0为例，由上知IT0用来选择外部中断0触发方式，假设我们选择了低电平有效，那当我们遇到低电平，那么进入IE0，当IE0配置为1，即允许中断，在IE寄存器中，EX0也为中断允许控制，当EX0也为1，则进入中断总开关EA，当EA也为1，则进入IP判断优先级，随后执行中断程序。</p>
 <h1 id="设置外部中断-编写程序"><a href="#设置外部中断-编写程序" class="headerlink" title="设置外部中断/编写程序"></a>设置外部中断/编写程序</h1><p>编写程序设计中断一般有以下几个步骤：</p>
@@ -526,7 +526,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -609,7 +609,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.4k字</span>
+  <span class="post-count">博客全站共12.3k字</span>
 </div>
 
         
