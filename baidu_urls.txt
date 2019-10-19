@@ -1,4 +1,4 @@
+https://ahaasin.github.io/2019/10/19/LCD1602使用/
 https://ahaasin.github.io/2019/10/11/PWMb波形输出/
 https://ahaasin.github.io/2019/09/10/定时器-计数器的原理及使用/
 https://ahaasin.github.io/2019/09/05/hexo下nexT7-X主题的美化及其他设置/
-https://ahaasin.github.io/2019/09/03/hello-world/

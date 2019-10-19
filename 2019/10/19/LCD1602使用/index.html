@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<script src="/live2d-widget/autoload.js"></script>
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":40,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="LCD1602液晶显示屏的使用">
+<meta name="keywords" content="51单片机,单片机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LCD1602使用">
+<meta property="og:url" content="https://ahaasin.github.io/2019/10/19/LCD1602使用/index.html">
+<meta property="og:site_name" content="Ahaasin">
+<meta property="og:description" content="LCD1602液晶显示屏的使用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019101911394589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019123827626.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019125250100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019130636227.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019131238753.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019132049545.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019101913251724.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019134020457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191019133830312.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-10-19T05:47:14.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LCD1602使用">
+<meta name="twitter:description" content="LCD1602液晶显示屏的使用">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019101911394589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70">
+  <link rel="canonical" href="https://ahaasin.github.io/2019/10/19/LCD1602使用/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>LCD1602使用 | Ahaasin</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c8e6bb12fded2e213ba2fb7359acf241";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ahaasin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://ahaasin.github.io/2019/10/19/LCD1602使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ahaasin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ahaasin">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">LCD1602使用
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-19 13:46:13 / 修改时间：13:47:14" itemprop="dateCreated datePublished" datetime="2019-10-19T13:46:13+08:00">2019-10-19</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="LCD1602液晶显示屏的使用"><a href="#LCD1602液晶显示屏的使用" class="headerlink" title="LCD1602液晶显示屏的使用"></a>LCD1602液晶显示屏的使用</h1><a id="more"></a><h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>LCD1602专门用来显示字母、数字、符号，由两行，每行16个5<em>7或5</em>10的点阵自字符位组成，每个字符位可以显示一个字符。显示器内置128个ASCII码字符库，只有并行接口。</p>
+<h3 id="接口信号说明"><a href="#接口信号说明" class="headerlink" title="接口信号说明"></a>接口信号说明</h3><p>1602有16个接口控制，接口功能如下图</p>
+<p><img src="https://img-blog.csdnimg.cn/2019101911394589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="接口说明"></p>
+<h3 id="基本时序操作"><a href="#基本时序操作" class="headerlink" title="基本时序操作"></a>基本时序操作</h3><p>读状态：输入： RS=L,R/W=H,E=H;<br>读数据： 输入：RS=H,R/W=H,E=H;<br>写指令： 输入：RS=L,R/W=L,D0<del>D7=指令码，E=高脉冲；<br>写数据： 输入：RS=H,R/W=L,D0</del>D7=数据，E=高脉冲.</p>
+<h3 id="DDRAM"><a href="#DDRAM" class="headerlink" title="DDRAM"></a>DDRAM</h3><p>1602显示器基于HD44780芯片，其内置了DDRAM、CGRAM和CGROM。DDRAM相当于RAM，用来寄存待现显示的字符代码，共80个字节，地址和屏幕的对应关系如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191019123827626.png" alt="在这里插入图片描述"></p>
+<p>当我们想要在第二行第一列显示“A“，只要在40H地址输入”A”的字形码就行了。<br>显示器只有16列，那么第一行10H和第二行50H之后的地址上的数据，需要通过移屏指令将他们移入。</p>
+<h3 id="状态字说明"><a href="#状态字说明" class="headerlink" title="状态字说明"></a>状态字说明</h3><p><img src="https://img-blog.csdnimg.cn/20191019125250100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>原则上每次对单片机进行读写操作之前，都必须先进行读写检测，确保STA7=0，实际上，单片机操作速度慢于液晶控制器反应速度，因此可不进行检测，只进行短暂延时即可。</p>
+<h3 id="指令操作"><a href="#指令操作" class="headerlink" title="指令操作"></a>指令操作</h3><p><strong>清屏指令</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20191019130636227.png" alt></p>
+<p>功能：<br>1.将DDRAM全部填入“空白”ASCII码20H；<br>2.光标归位；<br>3.将地址计数器值设置为0。<br><strong>进入模式设置指令</strong><br><img src="https://img-blog.csdnimg.cn/20191019131238753.png" alt><br>功能：进入一位数据后光标移动方向，字符是否移动。<br>|I/D：|  0 =光标左移       |  1=光标右移|<br>|–|–|–|<br>S： |   0=显示屏不移动  |   1=显示屏整体右移<br><strong>显示开关控制指令</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20191019132049545.png" alt="在这里插入图片描述"><br>功能：控制显示器开关、光标是否显示及光标是否闪烁<br>|位名|0|1<br>|–|–|–|<br>D|显示功能关|显示功能开<br>C|无光标|有光标<br>B|光标闪烁|不闪烁<br><strong>功能设定指令</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/2019101913251724.png" alt="在这里插入图片描述"></p>
+<p>功能：设定数据总线位数、显示的行数及字形。<br>|位名|0|1<br>|–|–|–|<br>DL|数据总线4位|8位<br>N|显示一行|两行<br>F|每字符5<em>7点阵|5</em>10点阵</p>
+<h2 id="写操作时序"><a href="#写操作时序" class="headerlink" title="写操作时序"></a>写操作时序</h2><p><img src="https://img-blog.csdnimg.cn/20191019134020457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt></p>
+<ol>
+<li>通过RS确定写数据还是命令</li>
+<li>R/W端设置为写模式</li>
+<li>将数据或命令送达数据总线</li>
+<li>给E一个高脉冲，将数据送入液晶显示器<br>图中各个时序的延时因厂家不同而不同，大多很小，但为了运行稳定，最好短暂延时。</li>
+</ol>
+<h2 id="单片机接口"><a href="#单片机接口" class="headerlink" title="单片机接口"></a>单片机接口</h2><p><img src="https://img-blog.csdnimg.cn/20191019133830312.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNTU5MDc0,size_16,color_FFFFFF,t_70" alt></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;reg52.h&gt;</span><br><span class="line"></span><br><span class="line">typedef unsigned int uint;</span><br><span class="line">typedef unsigned char uchar;</span><br><span class="line"></span><br><span class="line">sbit rs=P2^<span class="number">6</span>;</span><br><span class="line">sbit wr=P2^<span class="number">5</span>;</span><br><span class="line">sbit e=P2^<span class="number">7</span>;</span><br><span class="line"><span class="keyword">void</span> delay(uint a)&#123;</span><br><span class="line">    uint i=<span class="number">100</span>;</span><br><span class="line">    <span class="keyword">while</span>(a--)&#123;</span><br><span class="line">        <span class="keyword">while</span>(i--);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> w_com(uchar com)&#123;    <span class="comment">//写指令</span></span><br><span class="line">    rs=<span class="number">0</span>;</span><br><span class="line">    wr=<span class="number">0</span>;</span><br><span class="line">    P0=com;</span><br><span class="line">    delay(<span class="number">1</span>);</span><br><span class="line">    e=<span class="number">1</span>;                  <span class="comment">//使能推动</span></span><br><span class="line">    delay(<span class="number">1</span>);</span><br><span class="line">    e=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> w_dat(uchar dat)&#123;   <span class="comment">//写数据</span></span><br><span class="line">    rs=<span class="number">1</span>;</span><br><span class="line">    wr=<span class="number">0</span>;</span><br><span class="line">    P0=dat;</span><br><span class="line">    delay(<span class="number">1</span>);</span><br><span class="line">    e=<span class="number">1</span>;</span><br><span class="line">    delay(<span class="number">1</span>);</span><br><span class="line">    e=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> init()&#123;            <span class="comment">//初始化</span></span><br><span class="line">    w_com(<span class="number">0x0c</span>);        <span class="comment">//各种指令，详见上</span></span><br><span class="line">    w_com(<span class="number">0x38</span>);</span><br><span class="line">    w_com(<span class="number">0x06</span>);</span><br><span class="line">    w_com(<span class="number">0x01</span>);</span><br><span class="line">    delay(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> pos_w(uchar x,uchar y,uchar a)&#123;   <span class="comment">//显示字符‘a’在x行y列</span></span><br><span class="line">    <span class="keyword">if</span>(y)&#123;</span><br><span class="line">        w_com(<span class="number">0x80</span>+x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        w_com(<span class="number">0xc0</span>+x);</span><br><span class="line">    &#125;</span><br><span class="line">    w_dat(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    pos_w(<span class="number">0</span>,<span class="number">1</span>,<span class="string">'a'</span>);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/51单片机/" rel="tag"># 51单片机</a>
+            
+              <a href="/tags/单片机/" rel="tag"># 单片机</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/11/PWMb波形输出/" rel="next" title="PWM波形输出">
+                  <i class="fa fa-chevron-left"></i> PWM波形输出
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQ3My8yMjk4NA"></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LCD1602液晶显示屏的使用"><span class="nav-number">1.</span> <span class="nav-text">LCD1602液晶显示屏的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口信号说明"><span class="nav-number">1.1.1.</span> <span class="nav-text">接口信号说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本时序操作"><span class="nav-number">1.1.2.</span> <span class="nav-text">基本时序操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDRAM"><span class="nav-number">1.1.3.</span> <span class="nav-text">DDRAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态字说明"><span class="nav-number">1.1.4.</span> <span class="nav-text">状态字说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令操作"><span class="nav-number">1.1.5.</span> <span class="nav-text">指令操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写操作时序"><span class="nav-number">1.2.</span> <span class="nav-text">写操作时序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单片机接口"><span class="nav-number">1.3.</span> <span class="nav-text">单片机接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">1.4.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="Ahaasin">
+  <p class="site-author-name" itemprop="name">Ahaasin</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/5534286284" title="Weibo &rarr; https://weibo.com/5534286284" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://space.bilibili.com/13167229" title="bilibili &rarr; https://space.bilibili.com/13167229" rel="noopener" target="_blank"><i class="fa fa-fw fa-tv"></i>bilibili</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ahaasin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共14.2k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script defer src="/lib/three/three.min.js"></script>
+  <script defer src="/lib/three/three-waves.min.js"></script>
+  <script defer src="/lib/three/canvas_lines.min.js"></script>
+  <script defer src="/lib/three/canvas_sphere.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script><script src="/js/bookmark.js?v=7.4.0"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
